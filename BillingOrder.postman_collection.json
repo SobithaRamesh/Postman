@@ -1,0 +1,216 @@
+{
+	"info": {
+		"_postman_id": "f8720b24-6b92-42fb-b8d2-e64d88800cda",
+		"name": "BillingOrder",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Post",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"//setup\r",
+							"pm.environment.set(\"i\", \"100\");\r",
+							"pm.environment.set(\"lastName\", \"rr\");\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//After request\r",
+							"//Teardown\r",
+							"\r",
+							"//Assertion\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"//method-checking from all body\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"ss\");\r",
+							"});\r",
+							"\r",
+							"//pm.test(\"Your test name\", function () {\r",
+							"//    var jsonData = pm.response.json();\r",
+							"//    pm.expect(jsonData.firstName).to.eql(data.firstName);\r",
+							"//});\r",
+							"\r",
+							"\r",
+							"\r",
+							"var jsonData = pm.response.json();  //Reading response\r",
+							"console.log(jsonData.id);  \r",
+							"console.log(jsonData.firstName);\r",
+							"console.log(jsonData.lastName);\r",
+							"\r",
+							"//set to envi\r",
+							"//\r",
+							"pm.environment.set(\"id\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"addressLine1\": \"string\",\r\n  \"addressLine2\": \"string\",\r\n  \"city\": \"string\",\r\n  \"comment\": \"stfing\",\r\n  \"email\": \"risu@gmail.com\",\r\n  \"firstName\": \"{{firstName}}\",\r\n  \"id\": 0,\r\n  \"itemNumber\": 0,\r\n  \"lastName\": \"{{lastName}}\",\r\n  \"phone\": \"6767898963\",\r\n  \"state\": \"AL\",\r\n  \"zipCode\": \"343423\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{url}}:{{port}}/BillingOrder/",
+					"protocol": "http",
+					"host": [
+						"{{url}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"BillingOrder",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "3",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{url}}:{{port}}/BillingOrder/{{id}}",
+					"protocol": "http",
+					"host": [
+						"{{url}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"BillingOrder",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get single record",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "57",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8181/BillingOrder/{{id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8181",
+					"path": [
+						"BillingOrder",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"addressLine1\": \"string\",\r\n  \"addressLine2\": \"string\",\r\n  \"city\": \"string\",\r\n  \"comment\": \"stfing\",\r\n  \"email\": \"fggghg@hm.com\",\r\n  \"firstName\": \"{{firstName}}\",\r\n  \"id\": 0,\r\n  \"itemNumber\": 0,\r\n  \"lastName\": \"{{lastName}}\",\r\n  \"phone\": \"6767898963\",\r\n  \"state\": \"AL\",\r\n  \"zipCode\": \"343423\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{url}}:{{port}}/BillingOrder/{{id}}",
+					"protocol": "http",
+					"host": [
+						"{{url}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"BillingOrder",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8181/BillingOrder/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8181",
+					"path": [
+						"BillingOrder",
+						"6"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
