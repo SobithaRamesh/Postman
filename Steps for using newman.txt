@@ -1,0 +1,27 @@
+1.  Install nodejs
+
+2.  Install newman
+    npm install -g newman
+
+3.  newman environment:
+    newman run BillingOrder.postman_collection.json -e Try.postman_environment.json
+
+4.  newman csv:
+    newman run BillingOrder.postman_collection.json -e Try.postman_environment.json -d data1.csv
+
+5.  newman-reporter-html
+    npm install -g newman-reporter-html
+
+6.  newman-csv reporting
+    newman run BillingOrder.postman_collection.json -e Try.postman_environment.json -d data1.csv -r html
+
+Other commands:
+
+1.Template report:
+newman run BillingOrder.postman_collection.json -e Try.postman_environment.json -d data1.csv --reporter-html-template Template/htmltepm.hbs --reporter-html-export report/report.html
+
+2.Template report with cli:
+newman run BillingOrder.postman_collection.json -e Try.postman_environment.json -d data1.csv -r cli,html --reporter-html-template Template/htmltemp.hbs --reporter-html-export report/report_with_csv_data.html
+
+
+
